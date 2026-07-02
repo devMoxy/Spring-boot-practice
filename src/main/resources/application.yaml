@@ -6,3 +6,8 @@ stripe:
   enabled: true
   timeout: 1000
   supported-currencies: USD,EUR,GBP
+payment-gateway: stripe
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1

@@ -1,15 +1,28 @@
 package com.devmoxy.store;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class OrderService {
     private PaymentService paymentService;
 
-    public OrderService(@Qualifier("stripe")PaymentService paymentService){
+    public OrderService(PaymentService paymentService){
         this.paymentService = paymentService;
+        System.out.println("OrderService created");
+    }
+
+    @PostConstruct
+    public void init(){
+        System.out.println("Post construct");
+    }
+
+    @PreDestroy
+    public void cleanup(){
+        System.out.println("Destroy");
     }
 
     public void placeOrder(){

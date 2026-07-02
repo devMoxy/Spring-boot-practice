@@ -4,18 +4,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.util.Scanner;
 
 @SpringBootApplication
 public class StoreApplication {
 
     public static void main(String[] args) {
-        ApplicationContext context   = SpringApplication.run(StoreApplication.class, args);
-        var manager = context.getBean(OrderService.class);
-        manager.placeOrder();
+        ConfigurableApplicationContext context   = SpringApplication.run(StoreApplication.class, args);
+        var userService = context.getBean(UserService.class);
+        userService.Register(new User (1, "devMoxy", "devmoxy@gmail.com", "devMoxy123"));
+
     }
 
 //    @Controller
