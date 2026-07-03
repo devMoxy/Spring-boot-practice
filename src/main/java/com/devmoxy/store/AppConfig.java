@@ -8,17 +8,17 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class AppConfig {
-    @Value("{server.port}")
+    @Value("${server.port}")
     private int serverPort;
 
-    @Value("server.port-servlet.context-path")
+    @Value("${server.servlet.context-path}")
     private String contextPath;
 
     public int getServerPort() { return serverPort;}
 
     public String getContextPath() { return contextPath; }
 
-    @Value("payment-gateway-stripe")
+    @Value("${payment-gateway:stripe}")
     private String paymentGateway;
 
     @Bean
