@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Scanner;
 
 @SpringBootApplication
-@RestController
 public class StoreApplication {
 
     public static void main(String[] args) {
