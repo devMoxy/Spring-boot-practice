@@ -7,6 +7,7 @@ spring:
     password: Watermelon@1
   flyway:
     repair-on-migrate: true
+    out-of-order: true
 
 stripe:
   apiURL: https://api.stripe.com

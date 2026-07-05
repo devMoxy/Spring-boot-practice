@@ -1,4 +1,5 @@
 package com.devmoxy.store;
+import com.devmoxy.store.domain.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -10,7 +11,13 @@ import java.util.Scanner;
 public class StoreApplication {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context   = SpringApplication.run(StoreApplication.class, args);
+        //ConfigurableApplicationContext context   = SpringApplication.run(StoreApplication.class, args);
+        var user = User.builder()
+                .name("Moxy")
+                .email("moxygmal")
+                .build();
+
+        System.out.println(user);
     }
 
 //    @Controller
