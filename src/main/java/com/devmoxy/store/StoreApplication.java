@@ -1,5 +1,7 @@
 package com.devmoxy.store;
+import com.devmoxy.store.domain.Addresses;
 import com.devmoxy.store.domain.User;
+import com.devmoxy.store.domain.tags;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,8 +18,12 @@ public class StoreApplication {
                 .name("Moxy")
                 .email("moxygmal")
                 .build();
-
         System.out.println(user);
+
+        var tag = new tags("tag1");
+
+        user.getTags().add(tag);
+        tag.getUser().add(user);
     }
 
 //    @Controller

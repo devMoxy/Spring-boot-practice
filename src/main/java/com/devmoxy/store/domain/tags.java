@@ -3,6 +3,9 @@ package com.devmoxy.store.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -19,4 +22,11 @@ public class tags {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(mappedBy = "tags")
+    private Set<User> user = new HashSet<>();
+
+    public tags(String name) {
+        this.name = name;
+    }
 }

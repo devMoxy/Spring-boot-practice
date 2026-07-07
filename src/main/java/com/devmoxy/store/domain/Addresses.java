@@ -23,8 +23,8 @@ public class Addresses {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "user_id")
-    private long user_id;
+    @Column(name = "zip")
+    private long zip;
 
     @Column(name = "state")
     private String state;
@@ -32,4 +32,9 @@ public class Addresses {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private User user1;
 }
