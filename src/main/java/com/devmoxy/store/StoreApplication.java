@@ -20,10 +20,7 @@ public class StoreApplication {
                 .build();
         System.out.println(user);
 
-        var tag = new tags("tag1");
-
-        user.getTags().add(tag);
-        tag.getUser().add(user);
+        user.addTag("tag1");
     }
 
 //    @Controller

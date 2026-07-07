@@ -41,7 +41,11 @@ public class User {
         address.setUser(null);
     }
 
-
+    public void addTag(String tagName){
+        var tag = new tags(tagName);
+        tags.add(tag);
+        tag.getUser().add(this);
+    }
 
     @OneToMany(mappedBy = "user")
     @Builder.Default
@@ -53,5 +57,6 @@ public class User {
     joinColumns = @JoinColumn(name  = "user_id"),
     inverseJoinColumns = @JoinColumn(name  = "tag_id")
     )
+    @Builder.Default
     private Set<tags> tags = new HashSet<>();
 }
