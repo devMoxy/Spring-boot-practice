@@ -1,6 +1,7 @@
 package com.devmoxy.store;
 import com.devmoxy.store.domain.Addresses;
 import com.devmoxy.store.domain.User;
+import com.devmoxy.store.domain.profiles;
 import com.devmoxy.store.domain.tags;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,12 +16,22 @@ public class StoreApplication {
     public static void main(String[] args) {
         //ConfigurableApplicationContext context   = SpringApplication.run(StoreApplication.class, args);
         var user = User.builder()
+                .id(1)
                 .name("Moxy")
                 .email("moxygmal")
                 .build();
-        System.out.println(user);
 
-        user.addTag("tag1");
+        var profile = profiles.builder()
+                .id(1)
+                .bio("upcoming SWE")
+                .phone_number(4343)
+                .loyalty_points(2)
+                .build();
+
+        user.setProfile(profile);
+        profile.setUser(user);
+
+        System.out.println(user);
     }
 
 //    @Controller

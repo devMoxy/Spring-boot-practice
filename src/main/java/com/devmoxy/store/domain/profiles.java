@@ -21,14 +21,20 @@ public class profiles {
     private String bio;
 
     @Column(nullable = false, name = "phone_number")
-    private String phone_number;
+    private long phone_number;
 
     @Column(name = "date_of_birth")
     private long date_of_birth;
 
     @Column(name = "loyalty_points")
-    private String loyalty_points;
+    private int loyalty_points;
 
     @Column(name = "user_id")
     private long user_id;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    @MapsId
+    @ToString.Exclude
+    private User user;
 }

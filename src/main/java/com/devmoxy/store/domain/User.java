@@ -20,7 +20,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name  = "id")
-    private Long id;
+    private long id;
 
     @Column(nullable = false, name = "name")
     private String name;
@@ -57,6 +57,10 @@ public class User {
     joinColumns = @JoinColumn(name  = "user_id"),
     inverseJoinColumns = @JoinColumn(name  = "tag_id")
     )
+
     @Builder.Default
     private Set<tags> tags = new HashSet<>();
+
+    @OneToOne(mappedBy = "user")
+    private profiles profile;
 }
