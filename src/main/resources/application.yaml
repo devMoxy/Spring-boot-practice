@@ -8,13 +8,8 @@ spring:
   flyway:
     repair-on-migrate: true
     out-of-order: true
-
-stripe:
-  apiURL: https://api.stripe.com
-  enabled: true
-  timeout: 1000
-  supported-currencies: USD,EUR,GBP
-  payment-gateway: stripe
+  jpa:
+    show-sql: true
 
 server:
   port: 8080
