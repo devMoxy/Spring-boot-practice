@@ -47,7 +47,7 @@ public class User {
         tag.getUser().add(this);
     }
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     @Builder.Default
     @ToString.Exclude
     private List<Addresses> addresses = new ArrayList<>();

@@ -24,7 +24,7 @@ public class profiles {
     private long phone_number;
 
     @Column(name = "date_of_birth")
-    private long date_of_birth;
+    private Long date_of_birth;
 
     @Column(name = "loyalty_points")
     private int loyalty_points;
@@ -32,7 +32,7 @@ public class profiles {
     @Column(name = "user_id")
     private long user_id;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId
     @ToString.Exclude
