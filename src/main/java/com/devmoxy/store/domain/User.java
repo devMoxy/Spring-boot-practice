@@ -47,7 +47,7 @@ public class User {
         tag.getUser().add(this);
     }
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     @Builder.Default
     @ToString.Exclude
     private List<Addresses> addresses = new ArrayList<>();
@@ -61,7 +61,7 @@ public class User {
     @Builder.Default
     private Set<tags> tags = new HashSet<>();
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private profiles profile;
 
     @ManyToMany

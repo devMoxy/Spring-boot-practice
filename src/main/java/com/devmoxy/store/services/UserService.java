@@ -1,6 +1,8 @@
 package com.devmoxy.store.services;
 
 import com.devmoxy.store.domain.Addresses;
+import com.devmoxy.store.domain.Category;
+import com.devmoxy.store.domain.Product;
 import com.devmoxy.store.domain.User;
 import com.devmoxy.store.repositories.AddressesRepository;
 import com.devmoxy.store.repositories.ProfileRepository;
@@ -10,6 +12,8 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 @AllArgsConstructor
 @Service("userService")
@@ -74,6 +78,25 @@ public class UserService {
 
         address.setUser(user);
         addressesRepository.save(address);
+    }
+
+    @Transactional
+    public void deleteRelated(){
+        var user = userRepository.findById(11L).orElseThrow();
+        var address = user.getAddresses().getFirst();
+        user.removeAddress(address);
+    }
+
+    public void manageProducts(){
+
+        var category = new Category("Category");
+        var product  = Product.builder()
+                .name("product")
+                .description("description")
+                .price(BigDecimal.valueOf(9.99))
+                .category(category)
+                .build();
+        
     }
 
 }
