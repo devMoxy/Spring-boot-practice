@@ -1,6 +1,4 @@
 package com.devmoxy.store;
-import com.devmoxy.store.domain.User;
-import com.devmoxy.store.repositories.UserRepository;
 import com.devmoxy.store.services.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -85,18 +85,11 @@ public class UserService {
         user.removeAddress(address);
     }
 
-    @Transactional
     public void manageProducts(){
-
-        var category = categoryRepository.findById((byte)1).orElseThrow();
-        var product  = Product.builder()
-                .name("product2")
-                .description("description2")
-                .price(BigDecimal.valueOf(5.99))
-                .category(category)
-                .build();
-
-        productRepository.save(product);
+        var user = userRepository.findById(1L).orElseThrow();
+        var products = productRepository.findAll();
+        products.forEach(user::addFavoriteProduct);
+        userRepository.save(user);
     }
 
 }

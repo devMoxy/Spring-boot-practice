@@ -70,5 +70,11 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
+
+    @Transient
     private Set<Product> favouriteProducts = new HashSet<>();
+
+    public void addFavoriteProduct(Product product) {
+        favouriteProducts.add(product);
+    }
 }
