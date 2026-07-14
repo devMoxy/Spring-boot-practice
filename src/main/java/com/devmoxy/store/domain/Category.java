@@ -30,4 +30,8 @@ public class Category {
         this.name = name;
         this.id = id;
     }
+
+    public Category(byte id) {
+        this.id = id;
+    }
 }

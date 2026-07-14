@@ -1,6 +1,7 @@
 package com.devmoxy.store.services;
 
 import com.devmoxy.store.domain.Addresses;
+import com.devmoxy.store.domain.Category;
 import com.devmoxy.store.domain.Product;
 import com.devmoxy.store.domain.User;
 import com.devmoxy.store.repositories.*;
@@ -20,6 +21,7 @@ public class UserService {
     private final AddressesRepository addressesRepository;
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+
 
     @Transactional
     public void showEntityStates(){
@@ -97,4 +99,8 @@ public class UserService {
         productRepository.updatePriceByCategory(BigDecimal.valueOf(10), (byte)1);
     }
 
+    public void fetchProducts(){
+        var products  = productRepository.findByCategory(new Category((byte)1));
+        products.forEach(p -> System.out.println(p.getId() + " " + p.getName()));
+    }
 }

@@ -1,6 +1,9 @@
 package com.devmoxy.store.repositories;
 
+import com.devmoxy.store.domain.Category;
 import com.devmoxy.store.domain.Product;
+import com.devmoxy.store.dtos.ProductSummary;
+import com.devmoxy.store.dtos.ProductSummaryDTO;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -26,4 +29,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Modifying
     @Query("update Product p set p.price = :newPrice where p.category.id = :categoryId")
     void updatePriceByCategory(BigDecimal newPrice, Byte categoryId);
+
+    List<ProductSummaryDTO> findByCategory(Category category);
 }

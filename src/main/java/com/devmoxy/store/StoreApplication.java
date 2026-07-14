@@ -11,6 +11,6 @@ public class StoreApplication {
         ConfigurableApplicationContext context   = SpringApplication.run(StoreApplication.class, args);
         var service = context.getBean(UserService.class);
 
-        service.updateProductRepository();
+        service.fetchProducts();
     }
 }
