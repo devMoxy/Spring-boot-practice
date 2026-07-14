@@ -92,4 +92,9 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
+    public void updateProductRepository(){
+        productRepository.updatePriceByCategory(BigDecimal.valueOf(10), (byte)1);
+    }
+
 }
