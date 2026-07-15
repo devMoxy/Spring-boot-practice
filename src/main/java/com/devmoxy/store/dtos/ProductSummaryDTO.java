@@ -7,6 +7,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class ProductSummaryDTO {
-    Long getId();
-    String getName();
+    private Long id;
+    private String name;
 }
