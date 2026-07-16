@@ -60,8 +60,8 @@ public class User {
     @Builder.Default
     private Set<tags> tags = new HashSet<>();
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private profiles profile;
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+//    private profiles profile;
 
     @ManyToMany
     @JoinTable(
