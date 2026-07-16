@@ -19,7 +19,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findByPrice(BigDecimal price);
 
-
     @Query("select p from Product p where p.price between :min and :max order by p.name")
     List<Product> findByPriceBetweenOrderByName(@Param("min")BigDecimal min, @Param("max")BigDecimal max);
 
@@ -30,5 +29,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query("update Product p set p.price = :newPrice where p.category.id = :categoryId")
     void updatePriceByCategory(BigDecimal newPrice, Byte categoryId);
 
-    List<ProductSummaryDTO> findByCategory(Category category);
+    @Query("select p from Product p where p.category = :category")
+    List<ProductSummaryDTO> findByCategory(@Param("category") Category category);
 }

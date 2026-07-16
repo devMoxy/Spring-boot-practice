@@ -103,4 +103,10 @@ public class UserService {
         var products  = productRepository.findByCategory(new Category((byte)1));
         products.forEach(p -> System.out.println(p.getId() + " " + p.getName()));
     }
+
+    @Transactional
+    public void fetchUser(){
+        var user = userRepository.findByEmail("mail").orElseThrow();
+        System.out.println(user);
+    }
 }

@@ -13,7 +13,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 @Entity
 @Table(name = "users")
 public class User {
@@ -76,5 +75,13 @@ public class User {
 
     public void addFavoriteProduct(Product product) {
         favouriteProducts.add(product);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + name + ", " +
+                "email = " + email + ")";
     }
 }
