@@ -6,6 +6,7 @@ import com.devmoxy.store.dtos.ProductSummary;
 import com.devmoxy.store.dtos.ProductSummaryDTO;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -19,8 +20,8 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findByPrice(BigDecimal price);
 
-    @Query("select p from Product p where p.price between :min and :max order by p.name")
-    List<Product> findByPriceBetweenOrderByName(@Param("min")BigDecimal min, @Param("max")BigDecimal max);
+    @Procedure("findProductsByPrice")
+    List<Product> findProductsByPrice(@Param("min")BigDecimal min, @Param("max")BigDecimal max);
 
     @Query("select count(*) from Product p where p.price between :min and :max order by p.name")
     List<Product> countProducts (@Param("min")BigDecimal min, @Param("max")BigDecimal max);
@@ -31,4 +32,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     @Query("select p from Product p where p.category = :category")
     List<ProductSummaryDTO> findByCategory(@Param("category") Category category);
+
+    Object findProductsByPrice(BigDecimal price);
 }

@@ -85,7 +85,7 @@
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
 				<configuration>
-					<url>jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true</url>
+					<url>jdbc:mysql://localhost:3306/store_temp?createDatabaseIfNotExist=true</url>
 					<user>root</user>
 					<password>Watermelon@1</password>
 					<cleanDisabled>false</cleanDisabled>

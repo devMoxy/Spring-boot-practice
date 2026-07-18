@@ -99,9 +99,10 @@ public class UserService {
         productRepository.updatePriceByCategory(BigDecimal.valueOf(10), (byte)1);
     }
 
+    @Transactional
     public void fetchProducts(){
-        var products  = productRepository.findByCategory(new Category((byte)1));
-        products.forEach(p -> System.out.println(p.getId() + " " + p.getName()));
+        var products  = productRepository.findProductsByPrice(BigDecimal.valueOf(1), BigDecimal.valueOf(10));
+        products.forEach(System.out::println);
     }
 
     @Transactional
